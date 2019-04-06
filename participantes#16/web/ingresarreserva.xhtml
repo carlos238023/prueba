@@ -1,0 +1,46 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <f:view>
+            <p:growl>
+                <p:autoUpdate/>
+            </p:growl>
+                
+
+            <h:form>
+                <h1><h:outputText value="Create/Edit"/></h1>
+                <p:panelGrid columns="2">
+                    <p:outputLabel value="IdReserva:" for="idReserva" />
+                    <p:inputText id="idReserva" value="#{beanReserva.reserva.idReserva}" title="IdReserva" required="true" requiredMessage="The IdReserva field is required."/>
+                    <p:outputLabel value="FechaInicio:" for="fechaInicio" />
+                    <p:inputMask mask="99/99/9999" id="fechaInicio" value="#{beanReserva.reserva.fechaInicio}" title="FechaInicio" >
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </p:inputMask>
+                    <p:outputLabel value="FechaFinal:" for="fechaFinal" />
+                    <p:inputMask mask="99/99/9999" id="fechaFinal" value="#{beanReserva.reserva.fechaFinal}" title="FechaFinal" >
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </p:inputMask>
+                    <p:outputLabel value="PrecioAlquiler:" for="precioAlquiler" />
+                    <p:inputText id="precioAlquiler" value="#{beanReserva.reserva.precioAlquiler}" title="PrecioAlquiler" />
+                    <p:outputLabel value="ListrosGasolina:" for="listrosGasolina" />
+                    <p:inputText id="listrosGasolina" value="#{beanReserva.reserva.listrosGasolina}" title="ListrosGasolina" />
+                    <p:outputLabel value="CodCliente:" for="codCliente" />
+                    <p:selectOneMenu id="codCliente" value="#{beanReserva.reserva.codCliente.idCliente}" required="true" requiredMessage="The CodCliente field is required.">
+                        
+                        <f:selectItems value="#{beanCliente.listaCliente}" var="c" itemLabel="#{c.nombre}" itemValue="#{c.idCliente}"/>
+                    </p:selectOneMenu>
+                    <p:commandButton value="guardar" actionListener="#{beanReserva.guardar()}"/>
+                </p:panelGrid>
+            </h:form>
+        </f:view>
+
+    </h:body>
+</html>
+

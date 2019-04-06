@@ -1,0 +1,41 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <f:view>
+
+
+            <h:form>
+                <h1><h:outputText value="registrar coche"/></h1>
+                <p:panelGrid columns="2">
+                    <p:outputLabel value="CodCoche:" for="codCoche" />
+                    <p:inputText id="codCoche" value="#{beanCoche.coche.codCoche}" title="CodCoche" required="true" requiredMessage="The CodCoche field is required."/>
+                    <p:outputLabel value="Matricula:" for="matricula" />
+                   
+                    <p:inputMask mask="999-999" id="matricula" value="#{beanCoche.coche.matricula}" title="Matricula" />
+                     <p:outputLabel value="TipoCoche"/>
+                    <p:selectOneMenu value="#{beanCoche.tipoCoche}">
+                        <f:selectItem itemLabel="Microbus" itemValue="MB-"/>
+                        <f:selectItem itemLabel="Vehiculos de Carga" itemValue="C-"/>
+                         <f:selectItem itemLabel="pickup" itemValue="P-"/>
+                    </p:selectOneMenu>
+                    <p:outputLabel value="Modelo:" for="modelo" />
+                    <p:inputText id="modelo" value="#{beanCoche.coche.modelo}" title="Modelo" />
+                    <p:outputLabel value="Color:" for="color" />
+                    <p:inputText id="color" value="#{beanCoche.coche.color}" title="Color" />
+                    <p:outputLabel value="Marcar:" for="marcar" />
+                    <p:inputText id="marcar" value="#{beanCoche.coche.marcar}" title="Marcar" />
+                    <p:commandButton value="guardar" actionListener="#{beanCoche.guardar()}"/>
+                </p:panelGrid>
+            </h:form>
+        </f:view>
+
+    </h:body>
+</html>
+
